@@ -61,7 +61,7 @@ public class AgentDistributionPackageExporterFactory implements DistributionPack
     @Property(label = "Queue", description = "The name of the queue from which the packages should be exported.")
     private static final String QUEUE_NAME = "queue";
 
-    @Property(label = "Drop invalid queue items", description = "Remove invalid items from the queue.")
+    @Property(label = "Drop invalid queue items", description = "Remove invalid items from the queue.", boolValue = false)
     private static final String DROP_INVALID_QUEUE_ITEMS = "drop.invalid.items";
 
     @Property(name = "agent.target", label = "The target reference for the DistributionAgent that will be used to export packages.")
