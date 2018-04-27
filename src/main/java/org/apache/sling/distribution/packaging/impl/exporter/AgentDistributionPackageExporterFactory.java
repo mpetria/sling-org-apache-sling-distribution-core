@@ -80,7 +80,7 @@ public class AgentDistributionPackageExporterFactory implements DistributionPack
 
         String queueName = PropertiesUtil.toString(config.get(QUEUE_NAME), DistributionQueueDispatchingStrategy.DEFAULT_QUEUE_NAME);
         String name = PropertiesUtil.toString(config.get(NAME), "");
-        boolean dropInvalidItems = PropertiesUtil.toBoolean(config.get(DROP_INVALID_QUEUE_ITEMS), true);
+        boolean dropInvalidItems = PropertiesUtil.toBoolean(config.get(DROP_INVALID_QUEUE_ITEMS), false);
 
 
         packageExporter = new AgentDistributionPackageExporter(queueName, agent, packageBuilderProvider, name, dropInvalidItems);
