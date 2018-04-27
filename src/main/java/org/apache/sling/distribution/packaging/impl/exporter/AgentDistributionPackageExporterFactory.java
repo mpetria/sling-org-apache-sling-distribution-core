@@ -61,9 +61,13 @@ public class AgentDistributionPackageExporterFactory implements DistributionPack
     @Property(label = "Queue", description = "The name of the queue from which the packages should be exported.")
     private static final String QUEUE_NAME = "queue";
 
+    @Property(label = "Drop invalid queue items", description = "Remove invalid items from the queue.")
+    private static final String DROP_INVALID_QUEUE_ITEMS = "drop.invalid.items";
+
     @Property(name = "agent.target", label = "The target reference for the DistributionAgent that will be used to export packages.")
     @Reference(name = "agent")
     private DistributionAgent agent;
+
 
     @Reference
     private DistributionPackageBuilderProvider packageBuilderProvider;
@@ -76,9 +80,10 @@ public class AgentDistributionPackageExporterFactory implements DistributionPack
 
         String queueName = PropertiesUtil.toString(config.get(QUEUE_NAME), DistributionQueueDispatchingStrategy.DEFAULT_QUEUE_NAME);
         String name = PropertiesUtil.toString(config.get(NAME), "");
+        boolean dropInvalidItems = PropertiesUtil.toBoolean(config.get(DROP_INVALID_QUEUE_ITEMS), true);
 
 
-        packageExporter = new AgentDistributionPackageExporter(queueName, agent, packageBuilderProvider, name);
+        packageExporter = new AgentDistributionPackageExporter(queueName, agent, packageBuilderProvider, name, dropInvalidItems);
     }
 
     public void exportPackages(@Nonnull ResourceResolver resourceResolver, @Nonnull DistributionRequest distributionRequest, @Nonnull DistributionPackageProcessor packageProcessor) throws DistributionException {
