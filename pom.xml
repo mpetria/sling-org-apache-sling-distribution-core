@@ -32,7 +32,7 @@
     <!-- P R O J E C T                                                           -->
     <!-- ======================================================================= -->
     <artifactId>org.apache.sling.distribution.core</artifactId>
-    <version>0.2.9-SNAPSHOT</version>
+    <version>0.2.9-r201805101481</version>
     <packaging>bundle</packaging>
 
     <name>Apache Sling Distribution Core</name>
